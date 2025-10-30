@@ -16,7 +16,8 @@ interface GameContextType {
 
 const GameContext = createContext<GameContextType | undefined>(undefined);
 
-const WS_URL = 'ws://localhost:8080/ws';
+const WS_BASE = import.meta.env.VITE_WS_BASE_URL || 'ws://localhost:8080';
+const WS_URL = `${WS_BASE.replace(/\/$/, '')}/ws`;
 
 const initialGameState: GameState = {
   gameId: null,
